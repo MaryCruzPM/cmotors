@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="facturacion_apuntescon" model="ir.ui.view">
+            <field name="name">facturacion.apuntescon.view</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.account_journal_dashboard_kanban_view"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//t[@t-if='journal_type == 'bank'']//a[@name='open_action']" position='replace'>
+                    <a type="object" name="open_action" context="{'action_name': 'action_account_moves_all_a'}">Journal Items</a>
+                </xpath>
+                 <xpath expr="//a[@name='action_open_reconcile']//a[@name='open_action']" position='replace'>
+                    <a type="object" name="open_action" context="{'action_name': 'action_account_moves_all_a'}" >Journal Items</a>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
