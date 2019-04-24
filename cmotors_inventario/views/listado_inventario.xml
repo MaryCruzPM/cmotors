@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--para cometar-->
+<odoo>
+    <data>
+        <record id="listado_inventario_view_viest" model="ir.ui.view"> 
+            <field name="name">listado.heredado.view</field>
+            <field name="model">stock.quant</field>  
+            <field name="inherit_id" ref="stock.view_stock_quant_tree"/>
+         <!--    <field name="mode">primary</field> -->
+            <field name="arch" type="xml"> 
+<!--             <xpath expr="//field[@name='product_id']" position="attributes">
+                    <attribute name="invisible">0</attribute>
+            </xpath> -->
+            <xpath expr="//field[@name='quantity']" position='after'>
+                    <field name="x_valor_promedio_related" string="Valor Promedio"/>
+                    <field name="x_valor" string="Valor"/>
+            </xpath>
+            </field>            
+        </record>
+
+
+        <record id="listado_inventario_action_window" model="ir.actions.act_window">
+            <field name="name">listado.inventario.action.window</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.quant</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="listado_inventario_view_viest"></field>            
+        </record>
+        
+       <!--  <menuitem
+            id="Listado_Inventario"
+            name="Training Module"
+            sequence="30"
+            />      -->   
+        <menuitem
+            id="listado_inventario_menuitem"
+            name="Listado Inventario actual"
+            action="listado_inventario_action_window"  
+            parent="stock.menu_warehouse_report"           
+            sequence="100"
+        />          
+    </data>
+</odoo>
