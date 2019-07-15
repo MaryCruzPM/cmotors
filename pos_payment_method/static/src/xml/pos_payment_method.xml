@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    
+    <t t-extend="ClientDetailsEdit">
+        <t t-jquery=".client-details-left" t-operation="append">
+            <div class='client-detail'>
+                <span class='label'>Forma de pago</span>
+                <select class='detail partner-payment-method needsclick' name='payment_method_id'>
+                    <option value=''>No identificado</option>
+                    <t t-foreach='widget.pos.paymentmethods' t-as='method'>
+                        <option t-att-value='method.id' t-att-selected="partner.payment_method_id ? ((method.id === partner.payment_method_id[0]) ? true : undefined) : undefined"> 
+                            <t t-esc='method.name'/>
+                        </option>
+                    </t>
+                </select>
+            </div>
+        </t>
+    </t>
+
+    <t t-extend="ClientDetails">
+        <t t-jquery=".client-details-left" t-operation="append">
+            <div t-attf-class='client-detail #{widget.pos.paymentmethods.length &lt;= 1 ? "oe_hidden" : ""}'>
+                <span class='label'>Forma de pago</span>
+                <t t-if='partner.payment_method_id'>
+                    <span class='detail partner-payment-method'><t t-esc='partner.payment_method_id[1]'/></span>
+                </t>
+                <t t-if='!partner.payment_method_id'>
+                    <span class='detail partner-payment-method empty'>N/A</span>
+                </t>
+            </div>
+        </t>
+    </t>
+</templates>

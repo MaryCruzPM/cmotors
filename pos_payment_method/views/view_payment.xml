@@ -1,0 +1,39 @@
+<odoo>
+    
+    <record id="view_tree_partner_payment_method" model="ir.ui.view">
+        <field name="name">res.partner.payment.method.tree.view</field>
+        <field name="model">res.partner.payment.method</field>
+        <field name="arch" type="xml">
+            <tree string="PaymentMethod" editable="bottom">
+                <field name="name" required="1"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="partner_payment_method_action" model="ir.actions.act_window">
+        <field name="name">Payment Mathod</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner.payment.method</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a Payment Method.
+          </p>
+        </field>
+    </record>
+
+    <menuitem parent="contacts.res_partner_menu_config"
+            id="menu_root_partner_payment_method"
+            sequence="10"
+            name="Payment Methods"
+            />
+
+    <menuitem parent="menu_root_partner_payment_method"
+            id="menu_partner_payment_method"
+            sequence="1"
+            action="partner_payment_method_action"
+            />
+
+</odoo>
