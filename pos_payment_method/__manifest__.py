@@ -10,7 +10,8 @@
     'depends': ['point_of_sale', 'contacts'],
     "data": [
         'views/templates.xml',
-        'views/view_payment.xml',
+        #'views/view_payment.xml',
+       # 'views/vista_uso.xml',
     ],
     'qweb': [
         'static/src/xml/pos_payment_method.xml',

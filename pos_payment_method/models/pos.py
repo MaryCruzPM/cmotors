@@ -2,13 +2,14 @@ from odoo import models, fields
 
 
 class PaymentMethod(models.Model):
-    _name = 'res.partner.payment.method'
+    _name = 'res.partner.use.method'
 
     name = fields.Char('Name')
     code  = fields.Char('Code')
+    description = fields.Char('description') 
 
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    payment_method_id = fields.Many2one('res.partner.payment.method', string="Way to pay")
+    x_uso = fields.Many2one('res.partner.use.method', string="uso")

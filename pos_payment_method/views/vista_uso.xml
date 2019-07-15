@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>        
+        <record id="Add_fields_Contactos_odoo" model="ir.ui.view">
+            <field name="name">Add_fields.Contactos.odoo.view</field>
+            <field name="model">res.partner</field>           
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//page[@name='accounting']//group[@name='accounting_entries']" position="before">   
+                        <page name="Datos_Extra" string="Datos Extra">   
+                            
+                            <group>
+                                <field name="x_uso" string='Uso XD'/>
+                            </group>
+                        </page>
+                    </xpath>
+            </field>
+        </record>          
+    </data>
+</odoo>

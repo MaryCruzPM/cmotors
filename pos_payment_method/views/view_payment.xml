@@ -2,11 +2,12 @@
     
     <record id="view_tree_partner_payment_method" model="ir.ui.view">
         <field name="name">res.partner.payment.method.tree.view</field>
-        <field name="model">res.partner.payment.method</field>
+        <field name="model">res.partner.use.method</field>
         <field name="arch" type="xml">
             <tree string="PaymentMethod" editable="bottom">
                 <field name="name" required="1"/>
                 <field name="code"/>
+                <field name="description"/>
             </tree>
         </field>
     </record>
@@ -14,7 +15,7 @@
     <record id="partner_payment_method_action" model="ir.actions.act_window">
         <field name="name">Payment Mathod</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">res.partner.payment.method</field>
+        <field name="res_model">res.partner.use.method</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree</field>
         <field name="help" type="html">
